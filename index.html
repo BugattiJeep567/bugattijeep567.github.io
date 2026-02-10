@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bugatti's Portfolio - Professional Discord Embeds</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0b0f;
+  color: #fff;
+  overflow-x: hidden;
+  animation: fadePage 0.8s ease-in-out;
+}
+
+@keyframes fadePage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Animated background particles */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #6c8cff;
+  border-radius: 50%;
+  animation: float 20s infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-100px) translateX(50px); }
+  50% { transform: translateY(-200px) translateX(-30px); }
+  75% { transform: translateY(-100px) translateX(-60px); }
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(11, 13, 19, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(108, 140, 255, 0.1);
+}
+
+nav h2 {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6c8cff, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+nav div a {
+  color: #b5b9c9;
+  text-decoration: none;
+  margin-left: 30px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav div a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6c8cff, #a78bfa);
+  transition: width 0.3s ease;
+}
+
+nav div a:hover {
+  color: #fff;
+}
+
+nav div a:hover::after {
+  width: 100%;
+}
+
+/* Header/Hero Section */
+header {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff, #6c8cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  animation: fadeUp 1.2s forwards;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #b5b9c9;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.3s forwards;
+  font-weight: 300;
+}
+
+.hero .stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.5s forwards;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6c8cff, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #888;
+  margin-top: 5px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 35px;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #6c8cff, #a78bfa);
+  border-radius: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.7s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(108, 140, 255, 0.4);
+}
+
+/* Sections */
+section {
+  padding: 120px 10%;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: clamp(36px, 6vw, 48px);
+  margin-bottom: 60px;
+  text-align: center;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff, #b5b9c9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.portfolio-item {
+  background: linear-gradient(145deg, #151923, #1a1f2e);
+  padding: 0;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  border: 1px solid rgba(108, 140, 255, 0.1);
+  position: relative;
+}
+
+.portfolio-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(108, 140, 255, 0.1), rgba(167, 139, 250, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.portfolio-item:hover::before {
+  opacity: 1;
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px 20px 0 0;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+}
+
+.portfolio-item-content {
+  padding: 25px;
+}
+
+.portfolio-item h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.portfolio-item p {
+  color: #888;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(108, 140, 255, 0.2);
+}
+
+/* Review Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: linear-gradient(145deg, #151923, #1a1f2e);
+  padding: 30px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(108, 140, 255, 0.1);
+  position: relative;
+}
+
+.card::before {
+  content: '"';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 60px;
+  color: rgba(108, 140, 255, 0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.card p {
+  color: #b5b9c9;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.card b {
+  color: #6c8cff;
+  font-weight: 700;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(108, 140, 255, 0.3);
+}
+
+/* Contact Section */
+.contact {
+  text-align: center;
+  background: linear-gradient(145deg, #151923, #1a1f2e);
+  border-radius: 30px;
+  padding: 80px 40px;
+  border: 1px solid rgba(108, 140, 255, 0.2);
+}
+
+.contact p {
+  font-size: 20px;
+  color: #b5b9c9;
+  margin: 20px 0 30px 0;
+}
+
+.contact .discord-tag {
+  display: inline-block;
+  background: rgba(108, 140, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 10px;
+  color: #6c8cff;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 20px 0;
+}
+
+/* Footer */
+footer {
+  padding: 40px;
+  text-align: center;
+  background: #0b0d13;
+  color: #555;
+  border-top: 1px solid rgba(108, 140, 255, 0.1);
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    padding: 15px 5%;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  nav div a {
+    margin-left: 15px;
+    font-size: 14px;
+  }
+  
+  section {
+    padding: 80px 5%;
+  }
+  
+  .hero .stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .portfolio-grid,
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeUp 1.2s 1s forwards, bounce 2s 2s infinite;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 24px;
+  height: 36px;
+  border: 2px solid rgba(108, 140, 255, 0.5);
+  border-radius: 20px;
+  position: relative;
+}
+
+.scroll-indicator span::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: #6c8cff;
+  border-radius: 2px;
+  animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Navigation -->
+<nav>
+  <h2>Bugatti's Portfolio</h2>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#work">Portfolio</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- Header/Hero -->
+<header id="home">
+  <div class="hero">
+    <h1>Professional Discord Embeds</h1>
+    <p>Modern • Clean • Built to Impress</p>
+    
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">75+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">5★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">24h</div>
+        <div class="stat-label">Fast Delivery</div>
+      </div>
+    </div>
+    
+    <a class="btn" href="#contact">Get Started</a>
+  </div>
+  
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
+</header>
+
+<!-- Portfolio Section -->
+<section id="work" class="reveal">
+  <h2 class="title">Featured Work</h2>
+  
+  <div class="portfolio-grid">
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-01-30_161244.png" alt="Colorado Affiliations">
+      <div class="portfolio-item-content">
+        <h3>Colorado Affiliations</h3>
+        <p>Interactive affiliate system with dropdown menus and custom branding for Colorado Roleplay</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-01-30_161239.png" alt="Colorado Information">
+      <div class="portfolio-item-content">
+        <h3>Information Dashboard</h3>
+        <p>Comprehensive server information with organized links and emoji indicators</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-01-30_161236.png" alt="Colorado Regulations">
+      <div class="portfolio-item-content">
+        <h3>Regulations Hub</h3>
+        <p>Multi-tier rules system with collapsible sections for Discord, Roblox, and department guidelines</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-01-30_161232.png" alt="Colorado Marketplace">
+      <div class="portfolio-item-content">
+        <h3>Marketplace System</h3>
+        <p>E-commerce embed with dropdown navigation and purchase terms integration</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-01-30_161227.png" alt="Colorado Departments">
+      <div class="portfolio-item-content">
+        <h3>Departments Portal</h3>
+        <p>Clean department selection system with intuitive dropdown interface</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-02-08_075910.png" alt="Spider's Order Info">
+      <div class="portfolio-item-content">
+        <h3>Spider's Order Information</h3>
+        <p>Professional commission order system with terms of service and support integration</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-02-08_075904.png" alt="Spider's Shop">
+      <div class="portfolio-item-content">
+        <h3>Spider's Shop</h3>
+        <p>Complete shop system with purchasing terms, store credits, and detailed policies</p>
+      </div>
+    </div>
+    
+    <div class="portfolio-item tilt">
+      <img src="Screenshot_2026-02-08_075858.png" alt="Spider's Dashboard">
+      <div class="portfolio-item-content">
+        <h3>Spider's Dashboard</h3>
+        <p>Custom commission dashboard showcasing quality service and fast delivery promises</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section id="reviews" class="reveal">
+  <h2 class="title">Client Reviews</h2>
+  <div class="cards">
+    <div class="card tilt">
+      <p><b>Baseballfan</b> — "Amazing product! Definitely recommend if you need your work showcased! Great product, fast service." ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="card tilt">
+      <p><b>noterollem</b> — "Did an amazing job! Was super quick and finished before estimated wait time. Perfection 😍" ⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="card tilt">
+      <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="reveal">
+  <div class="contact">
+    <h2 class="title">Let's Work Together</h2>
+    <p>Ready to elevate your Discord server with professional embeds?</p>
+    <div class="discord-tag">BugattiJeep567</div>
+    <br>
+    <a class="btn" href="https://discord.com/users/1004885156076728451" target="_blank">Message Me on Discord</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2026 BugattiJeep567. All rights reserved.
+</footer>
+
+<!-- Scripts -->
+<script>
+// Create animated particles
+function createParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.top = Math.random() * 100 + '%';
+    particle.style.animationDelay = Math.random() * 20 + 's';
+    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+    container.appendChild(particle);
+  }
+}
+
+createParticles();
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+window.addEventListener('scroll', () => {
+  for (const el of reveals) {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add('active');
+    }
+  }
+});
+
+// 3D tilt effect
+const cards = document.querySelectorAll('.tilt');
+cards.forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const midX = rect.width / 2;
+    const midY = rect.height / 2;
+    const rotateX = ((y - midY) / midY) * 8;
+    const rotateY = ((x - midX) / midX) * -8;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+  });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
