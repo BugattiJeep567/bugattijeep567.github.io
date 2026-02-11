@@ -303,20 +303,60 @@ section {
   box-shadow: 0 25px 50px rgba(108, 140, 255, 0.2);
 }
 
-/* Review Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* Review Cards - Marquee */
+.reviews-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.reviews-marquee-wrapper::before,
+.reviews-marquee-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reviews-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #0a0b0f, transparent);
+}
+
+.reviews-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #0a0b0f, transparent);
+}
+
+.reviews-marquee-track {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+.reviews-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .card {
   background: linear-gradient(145deg, #151923, #1a1f2e);
   padding: 30px;
   border-radius: 20px;
-  transition: all 0.3s ease;
   border: 1px solid rgba(108, 140, 255, 0.1);
   position: relative;
+  min-width: 320px;
+  max-width: 320px;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card::before {
@@ -343,7 +383,6 @@ section {
 }
 
 .card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border-color: rgba(108, 140, 255, 0.3);
 }
@@ -609,15 +648,46 @@ footer {
 <!-- Reviews Section -->
 <section id="reviews" class="reveal">
   <h2 class="title">Client Reviews</h2>
-  <div class="cards">
-    <div class="card tilt">
-      <p><b>Baseballfan</b> — "Amazing product! Definitely recommend if you need your work showcased! Great product, fast service." ⭐⭐⭐⭐⭐</p>
-    </div>
-    <div class="card tilt">
-      <p><b>noterollem</b> — "Did an amazing job! Was super quick and finished before estimated wait time. Perfection 😍" ⭐⭐⭐⭐⭐</p>
-    </div>
-    <div class="card tilt">
-      <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
+  <div class="reviews-marquee-wrapper">
+    <div class="reviews-marquee-track">
+      <!-- Original set -->
+      <div class="card">
+        <p><b>Baseballfan</b> — "Amazing product! Definitely recommend if you need your work showcased! Great product, fast service." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>noterollem</b> — "Did an amazing job! Was super quick and finished before estimated wait time. Perfection 😍" ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>Baseballfan</b> — "Amazing product! Definitely recommend if you need your work showcased! Great product, fast service." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>noterollem</b> — "Did an amazing job! Was super quick and finished before estimated wait time. Perfection 😍" ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <!-- Duplicated set for seamless loop -->
+      <div class="card">
+        <p><b>Baseballfan</b> — "Amazing product! Definitely recommend if you need your work showcased! Great product, fast service." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>noterollem</b> — "Did an amazing job! Was super quick and finished before estimated wait time. Perfection 😍" ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>Baseballfan</b> — "Amazing product! Definitely recommend if you need your work showcased! Great product, fast service." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>noterollem</b> — "Did an amazing job! Was super quick and finished before estimated wait time. Perfection 😍" ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="card">
+        <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
+      </div>
     </div>
   </div>
 </section>
