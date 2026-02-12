@@ -31,6 +31,41 @@ body {
   to { opacity: 1; }
 }
 
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0b0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(108, 140, 255, 0.1);
+  border-top: 4px solid #6c8cff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
 /* Animated background particles */
 .particles {
   position: fixed;
@@ -64,14 +99,16 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(11, 13, 19, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(11, 13, 19, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 20px 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  border-bottom: 1px solid rgba(108, 140, 255, 0.1);
+  border-bottom: 1px solid rgba(108, 140, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(108, 140, 255, 0.1);
 }
 
 nav h2 {
@@ -140,6 +177,18 @@ header {
   animation: fadeUp 1.2s forwards;
   line-height: 1.1;
   margin-bottom: 20px;
+  min-height: 90px;
+}
+
+.hero h1 .typewriter {
+  display: inline-block;
+  border-right: 3px solid #6c8cff;
+  padding-right: 5px;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
 }
 
 .hero p {
@@ -243,13 +292,16 @@ section {
 }
 
 .portfolio-item {
-  background: linear-gradient(145deg, #151923, #1a1f2e);
+  background: rgba(21, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 0;
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
-  border: 1px solid rgba(108, 140, 255, 0.1);
+  border: 1px solid rgba(108, 140, 255, 0.2);
   position: relative;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .portfolio-item::before {
@@ -348,15 +400,18 @@ section {
 }
 
 .card {
-  background: linear-gradient(145deg, #151923, #1a1f2e);
+  background: rgba(21, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 30px;
   border-radius: 20px;
-  border: 1px solid rgba(108, 140, 255, 0.1);
+  border: 1px solid rgba(108, 140, 255, 0.2);
   position: relative;
   min-width: 320px;
   max-width: 320px;
   flex-shrink: 0;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .card::before {
@@ -390,10 +445,13 @@ section {
 /* Contact Section */
 .contact {
   text-align: center;
-  background: linear-gradient(145deg, #151923, #1a1f2e);
+  background: rgba(21, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 30px;
   padding: 80px 40px;
-  border: 1px solid rgba(108, 140, 255, 0.2);
+  border: 1px solid rgba(108, 140, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .contact p {
@@ -514,6 +572,62 @@ footer {
   50% { transform: translateX(-50%) translateY(-10px); }
 }
 
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #6c8cff, #a78bfa);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 8px 20px rgba(108, 140, 255, 0.4);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(108, 140, 255, 0.6);
+}
+
+/* Particle Click Effects */
+.click-particle {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #6c8cff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  animation: particle-burst 0.8s ease-out forwards;
+}
+
+@keyframes particle-burst {
+  0% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) translate(var(--x), var(--y));
+  }
+}
+
+
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(108, 140, 255, 0.4);
 }
@@ -524,6 +638,11 @@ footer {
 </head>
 
 <body>
+
+<!-- Loading Screen -->
+<div class="loading-screen" id="loadingScreen">
+  <div class="loader"></div>
+</div>
 
 <!-- Background Particles -->
 <div class="particles" id="particles"></div>
@@ -542,7 +661,7 @@ footer {
 <!-- Header/Hero -->
 <header id="home">
   <div class="hero">
-    <h1>Professional Discord Embeds</h1>
+    <h1><span class="typewriter" id="typewriter"></span></h1>
     <p>Modern • Clean • Built to Impress</p>
     
     <div class="stats">
@@ -707,6 +826,9 @@ footer {
   </div>
 </section>
 
+<!-- Back to Top Button -->
+<div class="back-to-top" id="backToTop">↑</div>
+
 <!-- Footer -->
 <footer>
   © 2026 BugattiJeep567. All rights reserved.
@@ -715,6 +837,91 @@ footer {
 <!-- Scripts -->
 
 <script>
+// ── Loading Screen ──────────────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loadingScreen').classList.add('hidden');
+  }, 1000);
+});
+
+// ── Typewriter Effect ───────────────────────────────────────────────────────
+const phrases = ['Professional Discord Embeds'];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typewriterElement = document.getElementById('typewriter');
+const typingSpeed = 100;
+const deletingSpeed = 50;
+const pauseEnd = 2000;
+
+function typeWriter() {
+  const currentPhrase = phrases[phraseIndex];
+  
+  if (isDeleting) {
+    typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+  }
+  
+  let speed = isDeleting ? deletingSpeed : typingSpeed;
+  
+  if (!isDeleting && charIndex === currentPhrase.length) {
+    speed = pauseEnd;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+  }
+  
+  setTimeout(typeWriter, speed);
+}
+
+// Start typewriter after page loads
+setTimeout(typeWriter, 1500);
+
+// ── Particle Click Effects ─────────────────────────────────────────────────
+document.addEventListener('click', (e) => {
+  const colors = ['#6c8cff', '#a78bfa', '#8b9dff'];
+  const particleCount = 8;
+  
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'click-particle';
+    particle.style.left = e.clientX + 'px';
+    particle.style.top = e.clientY + 'px';
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+    
+    const angle = (Math.PI * 2 * i) / particleCount;
+    const velocity = 50 + Math.random() * 50;
+    const x = Math.cos(angle) * velocity;
+    const y = Math.sin(angle) * velocity;
+    
+    particle.style.setProperty('--x', x + 'px');
+    particle.style.setProperty('--y', y + 'px');
+    
+    document.body.appendChild(particle);
+    
+    setTimeout(() => particle.remove(), 800);
+  }
+});
+
+// ── Back to Top Button ──────────────────────────────────────────────────────
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 300) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // Create animated particles
 function createParticles() {
   const container = document.getElementById('particles');
