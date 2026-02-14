@@ -335,6 +335,14 @@ section {
 
 .portfolio-item-content {
   padding: 25px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-item-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .portfolio-item h3 {
@@ -631,17 +639,30 @@ footer {
   }
 }
 
-/* Cursor Trail */
-.cursor-trail {
+/* Custom Cursor */
+body {
+  cursor: none;
+}
+
+.custom-cursor {
   position: fixed;
-  width: 6px;
-  height: 6px;
-  background: linear-gradient(135deg, #6c8cff, #a78bfa);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6c8cff;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9998;
-  opacity: 0.6;
-  transition: transform 0.15s ease-out;
+  z-index: 9999;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.clicked {
+  transform: scale(0.8);
+  border-color: #a78bfa;
+}
+
+a, button, .portfolio-item, .card {
+  cursor: none;
 }
 
 /* Discord Status Badge */
@@ -971,45 +992,36 @@ function typeWriter() {
 // Start typewriter after page loads
 setTimeout(typeWriter, 1500);
 
-// ── Cursor Trail ────────────────────────────────────────────────────────────
-const trails = [];
-const trailCount = 15;
-
-for (let i = 0; i < trailCount; i++) {
-  const trail = document.createElement('div');
-  trail.className = 'cursor-trail';
-  document.body.appendChild(trail);
-  trails.push({ element: trail, x: 0, y: 0 });
-}
+// ── Custom Cursor Circle ───────────────────────────────────────────────────
+const cursor = document.createElement('div');
+cursor.className = 'custom-cursor';
+document.body.appendChild(cursor);
 
 let mouseX = 0;
 let mouseY = 0;
+let cursorX = 0;
+let cursorY = 0;
 
 document.addEventListener('mousemove', (e) => {
   mouseX = e.clientX;
   mouseY = e.clientY;
 });
 
-function animateTrails() {
-  let x = mouseX;
-  let y = mouseY;
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.2;
+  cursorY += (mouseY - cursorY) * 0.2;
   
-  trails.forEach((trail, index) => {
-    trail.x += (x - trail.x) * 0.2;
-    trail.y += (y - trail.y) * 0.2;
-    
-    trail.element.style.left = trail.x + 'px';
-    trail.element.style.top = trail.y + 'px';
-    trail.element.style.transform = `scale(${(trailCount - index) / trailCount})`;
-    
-    x = trail.x;
-    y = trail.y;
-  });
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
   
-  requestAnimationFrame(animateTrails);
+  requestAnimationFrame(animateCursor);
 }
 
-animateTrails();
+animateCursor();
+
+// Add click effect
+document.addEventListener('mousedown', () => cursor.classList.add('clicked'));
+document.addEventListener('mouseup', () => cursor.classList.remove('clicked'));
 
 // ── Animated Counter ────────────────────────────────────────────────────────
 function animateCounter(element, target, suffix) {
