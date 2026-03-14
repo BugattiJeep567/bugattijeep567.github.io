@@ -284,6 +284,34 @@ section {
 }
 
 /* Portfolio Grid */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 12px 30px;
+  background: rgba(21, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(108, 140, 255, 0.2);
+  border-radius: 25px;
+  color: #b5b9c9;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: linear-gradient(135deg, #6c8cff, #a78bfa);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -302,6 +330,23 @@ section {
   border: 1px solid rgba(108, 140, 255, 0.2);
   position: relative;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.portfolio-item.hidden {
+  display: none;
+}
+
+.portfolio-item .client-logo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 8px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .portfolio-item::before {
@@ -776,8 +821,15 @@ a, button, .portfolio-item, .card {
 <section id="work" class="reveal">
   <h2 class="title">Featured Work</h2>
   
+  <div class="portfolio-filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="discord">Discord Designs</button>
+    <button class="filter-btn" data-filter="clothing">Clothing Designs</button>
+  </div>
+  
   <div class="portfolio-grid">
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161244.png" alt="Colorado Affiliations">
       <div class="portfolio-item-content">
         <h3>Colorado Affiliations</h3>
@@ -785,7 +837,8 @@ a, button, .portfolio-item, .card {
       </div>
     </div>
     
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161239.png" alt="Colorado Information">
       <div class="portfolio-item-content">
         <h3>Information Dashboard</h3>
@@ -793,7 +846,8 @@ a, button, .portfolio-item, .card {
       </div>
     </div>
     
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161236.png" alt="Colorado Regulations">
       <div class="portfolio-item-content">
         <h3>Regulations Hub</h3>
@@ -801,7 +855,8 @@ a, button, .portfolio-item, .card {
       </div>
     </div>
     
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161232.png" alt="Colorado Marketplace">
       <div class="portfolio-item-content">
         <h3>Marketplace System</h3>
@@ -809,7 +864,8 @@ a, button, .portfolio-item, .card {
       </div>
     </div>
     
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161227.png" alt="Colorado Departments">
       <div class="portfolio-item-content">
         <h3>Departments Portal</h3>
@@ -817,15 +873,26 @@ a, button, .portfolio-item, .card {
       </div>
     </div>
 
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="1770738639732_image.png" alt="Colorado Training Guide">
       <div class="portfolio-item-content">
         <h3>Training Guide</h3>
         <p>Comprehensive training guide system with session procedures and conduct standards for Colorado Roleplay</p>
       </div>
     </div>
+
+    <div class="portfolio-item tilt" data-category="clothing">
+      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
+      <img src="Dripzels_2D_Showcase__5_.png" alt="JCSO Supervisor Uniform">
+      <div class="portfolio-item-content">
+        <h3>JCSO Supervisor Uniform</h3>
+        <p>Jefferson County Sheriff Office Supervisor uniform design for Colorado Roleplay</p>
+      </div>
+    </div>
     
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533795803_image.png" alt="Spider's Commissions">
       <img src="Screenshot 2026-02-08 075910.png" alt="Spider's Order Info">
       <div class="portfolio-item-content">
         <h3>Spider's Order Information</h3>
@@ -833,7 +900,8 @@ a, button, .portfolio-item, .card {
       </div>
     </div>
     
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533795803_image.png" alt="Spider's Commissions">
       <img src="Screenshot 2026-02-08 075904.png" alt="Spider's Shop">
       <div class="portfolio-item-content">
         <h3>Spider's Shop</h3>
@@ -841,7 +909,8 @@ a, button, .portfolio-item, .card {
       </div>
     </div>
     
-    <div class="portfolio-item tilt">
+    <div class="portfolio-item tilt" data-category="discord">
+      <img class="client-logo" src="1773533795803_image.png" alt="Spider's Commissions">
       <img src="Screenshot 2026-02-08 075858.png" alt="Spider's Dashboard">
       <div class="portfolio-item-content">
         <h3>Spider's Dashboard</h3>
@@ -1056,6 +1125,31 @@ portfolioItems.forEach(item => {
   
   item.addEventListener('mouseleave', () => {
     item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+  });
+});
+
+// ── Portfolio Filter ────────────────────────────────────────────────────────
+const filterButtons = document.querySelectorAll('.filter-btn');
+const portfolioItemsFilter = document.querySelectorAll('.portfolio-item');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.getAttribute('data-filter');
+    
+    // Update active button
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    // Filter items
+    portfolioItemsFilter.forEach(item => {
+      const category = item.getAttribute('data-category');
+      
+      if (filter === 'all' || category === filter) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
   });
 });
 
