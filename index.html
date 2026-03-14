@@ -336,19 +336,6 @@ section {
   display: none;
 }
 
-.portfolio-item .client-logo {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #fff;
-  padding: 8px;
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
 .portfolio-item::before {
   content: '';
   position: absolute;
@@ -822,14 +809,12 @@ a, button, .portfolio-item, .card {
   <h2 class="title">Featured Work</h2>
   
   <div class="portfolio-filters">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="discord">Discord Designs</button>
+    <button class="filter-btn active" data-filter="discord">Discord Designs</button>
     <button class="filter-btn" data-filter="clothing">Clothing Designs</button>
   </div>
   
   <div class="portfolio-grid">
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161244.png" alt="Colorado Affiliations">
       <div class="portfolio-item-content">
         <h3>Colorado Affiliations</h3>
@@ -838,7 +823,6 @@ a, button, .portfolio-item, .card {
     </div>
     
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161239.png" alt="Colorado Information">
       <div class="portfolio-item-content">
         <h3>Information Dashboard</h3>
@@ -847,7 +831,6 @@ a, button, .portfolio-item, .card {
     </div>
     
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161236.png" alt="Colorado Regulations">
       <div class="portfolio-item-content">
         <h3>Regulations Hub</h3>
@@ -856,7 +839,6 @@ a, button, .portfolio-item, .card {
     </div>
     
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161232.png" alt="Colorado Marketplace">
       <div class="portfolio-item-content">
         <h3>Marketplace System</h3>
@@ -865,7 +847,6 @@ a, button, .portfolio-item, .card {
     </div>
     
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Screenshot 2026-01-30 161227.png" alt="Colorado Departments">
       <div class="portfolio-item-content">
         <h3>Departments Portal</h3>
@@ -874,7 +855,6 @@ a, button, .portfolio-item, .card {
     </div>
 
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="1770738639732_image.png" alt="Colorado Training Guide">
       <div class="portfolio-item-content">
         <h3>Training Guide</h3>
@@ -883,7 +863,6 @@ a, button, .portfolio-item, .card {
     </div>
 
     <div class="portfolio-item tilt" data-category="clothing">
-      <img class="client-logo" src="1773533821898_image.png" alt="Colorado RP">
       <img src="Dripzels_2D_Showcase__5_.png" alt="JCSO Supervisor Uniform">
       <div class="portfolio-item-content">
         <h3>JCSO Supervisor Uniform</h3>
@@ -892,7 +871,6 @@ a, button, .portfolio-item, .card {
     </div>
     
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533795803_image.png" alt="Spider's Commissions">
       <img src="Screenshot 2026-02-08 075910.png" alt="Spider's Order Info">
       <div class="portfolio-item-content">
         <h3>Spider's Order Information</h3>
@@ -901,7 +879,6 @@ a, button, .portfolio-item, .card {
     </div>
     
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533795803_image.png" alt="Spider's Commissions">
       <img src="Screenshot 2026-02-08 075904.png" alt="Spider's Shop">
       <div class="portfolio-item-content">
         <h3>Spider's Shop</h3>
@@ -910,7 +887,6 @@ a, button, .portfolio-item, .card {
     </div>
     
     <div class="portfolio-item tilt" data-category="discord">
-      <img class="client-logo" src="1773533795803_image.png" alt="Spider's Commissions">
       <img src="Screenshot 2026-02-08 075858.png" alt="Spider's Dashboard">
       <div class="portfolio-item-content">
         <h3>Spider's Dashboard</h3>
@@ -1144,12 +1120,22 @@ filterButtons.forEach(button => {
     portfolioItemsFilter.forEach(item => {
       const category = item.getAttribute('data-category');
       
-      if (filter === 'all' || category === filter) {
+      if (category === filter) {
         item.classList.remove('hidden');
       } else {
         item.classList.add('hidden');
       }
     });
+  });
+});
+
+// Set Discord Designs as default view on page load
+window.addEventListener('DOMContentLoaded', () => {
+  portfolioItemsFilter.forEach(item => {
+    const category = item.getAttribute('data-category');
+    if (category !== 'discord') {
+      item.classList.add('hidden');
+    }
   });
 });
 
