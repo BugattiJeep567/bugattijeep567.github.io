@@ -615,13 +615,94 @@ footer {
   100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
 }
 
-a, button {
+/* Communities Section */
+.communities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.community-card {
+  background: rgba(21, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  border: 1px solid rgba(108, 140, 255, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+.community-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(108, 140, 255, 0.4);
+  box-shadow: 0 15px 50px rgba(108, 140, 255, 0.2);
+}
+
+.community-logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.community-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+.community-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.community-card .owner {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.community-card .status {
+  display: inline-block;
+  background: rgba(108, 140, 255, 0.1);
+  color: #6c8cff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.community-card .discord-link {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #6c8cff, #a78bfa);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
   transition: all 0.3s ease;
 }
 
-a:hover, button:hover {
+.community-card .discord-link:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(108, 140, 255, 0.4);
 }
+
 
 /* Back to Top Button */
 .back-to-top {
@@ -637,7 +718,7 @@ a:hover, button:hover {
   justify-content: center;
   color: #fff;
   font-size: 24px;
-  cursor: pointer;
+  cursor: none !important;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -653,6 +734,81 @@ a:hover, button:hover {
 .back-to-top:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 30px rgba(108, 140, 255, 0.6);
+}
+
+/* Communities Section */
+.communities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.community-card {
+  background: rgba(21, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(108, 140, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: none !important;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.community-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(108, 140, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(108, 140, 255, 0.2);
+}
+
+.community-logo {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.community-logo img {
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.community-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.community-info p {
+  color: #888;
+  font-size: 14px;
+  margin: 8px 0 0 0;
+}
+
+.community-owner {
+  font-size: 13px;
+  color: #6c8cff;
+  font-weight: 600;
+}
+
+.member-count {
+  color: #6c8cff !important;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 /* Particle Click Effects */
@@ -681,6 +837,14 @@ a:hover, button:hover {
 /* Custom Cursor */
 body {
   cursor: none;
+}
+
+* {
+  cursor: none !important;
+}
+
+a, button, .portfolio-item, .card, input, select, textarea {
+  cursor: none !important;
 }
 
 .custom-cursor {
@@ -775,6 +939,7 @@ a, button, .portfolio-item, .card {
   <div>
     <a href="#home">Home</a>
     <a href="#work">Portfolio</a>
+    <a href="#communities">Communities</a>
     <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
   </div>
@@ -902,6 +1067,53 @@ a, button, .portfolio-item, .card {
   </div>
 </section>
 
+<!-- Communities Section -->
+<section id="communities" class="reveal">
+  <h2 class="title">Trusted by Communities</h2>
+  
+  <div class="communities-grid">
+    <div class="community-card">
+      <div class="community-logo">
+        <img src="1780029920011_image.png" alt="Colorado Roleplay">
+      </div>
+      <h3>Colorado Roleplay</h3>
+      <div class="owner">Owned by LightningCrystal11</div>
+      <div class="status">Auto Update</div>
+      <a href="https://discord.gg/corp" class="discord-link" target="_blank">Join Server</a>
+    </div>
+
+    <div class="community-card">
+      <div class="community-logo">
+        <img src="1780029811653_image.png" alt="Colorado Springs Roleplay">
+      </div>
+      <h3>Colorado Springs RP</h3>
+      <div class="owner">Owned by ltzSup3r</div>
+      <div class="status">Auto Update</div>
+      <a href="https://discord.gg/csrrp" class="discord-link" target="_blank">Join Server</a>
+    </div>
+
+    <div class="community-card">
+      <div class="community-logo">
+        <img src="1780029772436_image.png" alt="Judah Customs">
+      </div>
+      <h3>Judah Customs</h3>
+      <div class="owner">Owned by judah</div>
+      <div class="status">Auto Update</div>
+      <a href="https://discord.gg/judah" class="discord-link" target="_blank">Join Server</a>
+    </div>
+
+    <div class="community-card">
+      <div class="community-logo">
+        <img src="1780029749687_image.png" alt="Prime Designs">
+      </div>
+      <h3>Prime Designs</h3>
+      <div class="owner">Owned by ZedPlayz_OnYT</div>
+      <div class="status">Auto Update</div>
+      <a href="https://discord.gg/bVXG2zJZ4" class="discord-link" target="_blank">Join Server</a>
+    </div>
+  </div>
+</section>
+
 <!-- Reviews Section -->
 <section id="reviews" class="reveal">
   <h2 class="title">Client Reviews</h2>
@@ -946,6 +1158,57 @@ a, button, .portfolio-item, .card {
         <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Communities Section -->
+<section id="communities" class="reveal">
+  <h2 class="title">Trusted by Communities</h2>
+  
+  <div class="communities-grid">
+    <a href="https://discord.gg/corp" target="_blank" class="community-card">
+      <div class="community-logo">
+        <img src="1780029749687_image.png" alt="Colorado Roleplay">
+      </div>
+      <div class="community-info">
+        <h3>Colorado Roleplay</h3>
+        <p class="member-count" data-guild-id="1234567890">Loading...</p>
+        <p class="community-owner">Owned by LightningCrystal11</p>
+      </div>
+    </a>
+
+    <a href="https://discord.gg/csrrp" target="_blank" class="community-card">
+      <div class="community-logo">
+        <img src="1780029920011_image.png" alt="Colorado Springs Roleplay">
+      </div>
+      <div class="community-info">
+        <h3>Colorado Springs RP</h3>
+        <p class="member-count" data-guild-id="1234567890">Loading...</p>
+        <p class="community-owner">Owned by ltzSup3r</p>
+      </div>
+    </a>
+
+    <a href="https://discord.gg/judah" target="_blank" class="community-card">
+      <div class="community-logo">
+        <img src="1780029811653_image.png" alt="Judah Customs">
+      </div>
+      <div class="community-info">
+        <h3>Judah Customs</h3>
+        <p class="member-count" data-guild-id="1234567890">Loading...</p>
+        <p class="community-owner">Owned by judah</p>
+      </div>
+    </a>
+
+    <a href="https://discord.gg/bVXG2zJZ4" target="_blank" class="community-card">
+      <div class="community-logo">
+        <img src="1780029772436_image.png" alt="Prime Designs">
+      </div>
+      <div class="community-info">
+        <h3>Prime Designs</h3>
+        <p class="member-count" data-guild-id="1234567890">Loading...</p>
+        <p class="community-owner">Owned by ZedPlayz_OnYT</p>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -1142,6 +1405,37 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// ── Update Community Member Counts ──────────────────────────────────────
+async function updateCommunityMemberCounts() {
+  const communities = [
+    { name: 'Colorado Roleplay', invite: 'corp', element: document.querySelectorAll('.member-count')[0] },
+    { name: 'Colorado Springs RP', invite: 'csrrp', element: document.querySelectorAll('.member-count')[1] },
+    { name: 'Judah Customs', invite: 'judah', element: document.querySelectorAll('.member-count')[2] },
+    { name: 'Prime Designs', invite: 'bVXG2zJZ4', element: document.querySelectorAll('.member-count')[3] }
+  ];
+
+  for (const community of communities) {
+    try {
+      // Using Discord.js API through a public endpoint
+      const response = await fetch(`https://discord.com/api/invite/${community.invite}`);
+      if (response.ok) {
+        const data = await response.json();
+        const memberCount = data.approximate_member_count || 'N/A';
+        community.element.textContent = `${memberCount.toLocaleString()} Members`;
+      } else {
+        community.element.textContent = 'Members';
+      }
+    } catch (error) {
+      console.log(`Could not fetch ${community.name} member count`);
+      community.element.textContent = 'Members';
+    }
+  }
+}
+
+// Update member counts on load and every 5 minutes
+updateCommunityMemberCounts();
+setInterval(updateCommunityMemberCounts, 5 * 60 * 1000);
 
 // ── Discord Status (Real-time with Lanyard API) ────────────────────────────
 const discordStatus = document.getElementById('discordStatus');
