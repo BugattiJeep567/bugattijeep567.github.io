@@ -25,13 +25,6 @@ body {
   overflow-x: hidden;
   animation: fadePage 0.8s ease-in-out;
 }
-
-@keyframes fadePage {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Loading Screen */
 .loading-screen {
   position: fixed;
   top: 0;
@@ -265,11 +258,16 @@ header {
   box-shadow: 0 15px 35px rgba(108, 140, 255, 0.4);
 }
 
-/* Sections */
+/* Page Transitions */
+html {
+  scroll-behavior: smooth;
+}
+
 section {
   padding: 120px 10%;
   position: relative;
   z-index: 1;
+  transition: opacity 0.6s ease;
 }
 
 .title {
@@ -330,6 +328,10 @@ section {
   border: 1px solid rgba(108, 140, 255, 0.2);
   position: relative;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  cursor: pointer;
 }
 
 .portfolio-item.hidden {
@@ -613,9 +615,12 @@ footer {
   100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-10px); }
+a, button {
+  transition: all 0.3s ease;
+}
+
+a:hover, button:hover {
+  transform: translateY(-2px);
 }
 
 /* Back to Top Button */
@@ -809,106 +814,89 @@ a, button, .portfolio-item, .card {
   <h2 class="title">Featured Work</h2>
   
   <div class="portfolio-filters">
-    <button class="filter-btn active" data-filter="discord">Discord Designs</button>
-    <button class="filter-btn" data-filter="clothing">Clothing Designs</button>
+    <button class="filter-btn active" data-filter="discord">All Designs</button>
   </div>
   
   <div class="portfolio-grid">
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-01-30 161244.png" alt="Colorado Affiliations">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205552.png" alt="Information Embed">
       <div class="portfolio-item-content">
-        <h3>Colorado Affiliations</h3>
-        <p>Interactive affiliate system with dropdown menus and custom branding for Colorado Roleplay</p>
+        <h3>Information Embed</h3>
+        <p>Server information and important links</p>
       </div>
-    </div>
+    </a>
     
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-01-30 161239.png" alt="Colorado Information">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205558.png" alt="Regulations Embed">
       <div class="portfolio-item-content">
-        <h3>Information Dashboard</h3>
-        <p>Comprehensive server information with organized links and emoji indicators</p>
+        <h3>Regulations Embed</h3>
+        <p>Community rules and guidelines</p>
       </div>
-    </div>
+    </a>
     
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-01-30 161236.png" alt="Colorado Regulations">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205626.png" alt="Marketplace Embed">
       <div class="portfolio-item-content">
-        <h3>Regulations Hub</h3>
-        <p>Multi-tier rules system with collapsible sections for Discord, Roblox, and department guidelines</p>
+        <h3>Marketplace Embed</h3>
+        <p>Shop and donation system</p>
       </div>
-    </div>
+    </a>
     
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-01-30 161232.png" alt="Colorado Marketplace">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205640.png" alt="Departments Embed">
       <div class="portfolio-item-content">
-        <h3>Marketplace System</h3>
-        <p>E-commerce embed with dropdown navigation and purchase terms integration</p>
+        <h3>Departments Embed</h3>
+        <p>Department selection and information</p>
       </div>
-    </div>
+    </a>
     
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-01-30 161227.png" alt="Colorado Departments">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205708.png" alt="Affiliations Embed">
       <div class="portfolio-item-content">
-        <h3>Departments Portal</h3>
-        <p>Clean department selection system with intuitive dropdown interface</p>
+        <h3>Affiliations Embed</h3>
+        <p>Partner and affiliate information</p>
       </div>
-    </div>
-
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="1770738639732_image.png" alt="Colorado Training Guide">
-      <div class="portfolio-item-content">
-        <h3>Training Guide</h3>
-        <p>Comprehensive training guide system with session procedures and conduct standards for Colorado Roleplay</p>
-      </div>
-    </div>
-
-    <div class="portfolio-item tilt" data-category="clothing">
-      <img src="Dripzels_2D_Showcase__6_.png" alt="Class A Uniform">
-      <div class="portfolio-item-content">
-        <h3>Class A Uniform</h3>
-        <p>Tennessee Highway Patrol formal uniform with tie</p>
-      </div>
-    </div>
-
-    <div class="portfolio-item tilt" data-category="clothing">
-      <img src="23ef7ef7-b2bb-4e74-96a9-6cbc37364b75.png" alt="Class B Uniform">
-      <div class="portfolio-item-content">
-        <h3>Class B Uniform</h3>
-        <p>Tennessee Highway Patrol long sleeves uniform</p>
-      </div>
-    </div>
-
-    <div class="portfolio-item tilt" data-category="clothing">
-      <img src="Dripzels_2D_Showcase__5_.png" alt="Class C Uniform">
-      <div class="portfolio-item-content">
-        <h3>Class C Uniform</h3>
-        <p>Tennessee Highway Patrol short sleeves uniform</p>
-      </div>
-    </div>
+    </a>
     
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-02-08 075910.png" alt="Spider's Order Info">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205721.png" alt="Suggestions Embed">
       <div class="portfolio-item-content">
-        <h3>Spider's Order Information</h3>
-        <p>Professional commission order system with terms of service and support integration</p>
+        <h3>Suggestions Embed</h3>
+        <p>Community feedback and suggestions</p>
       </div>
-    </div>
+    </a>
     
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-02-08 075904.png" alt="Spider's Shop">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205734.png" alt="Trainer Guide Embed">
       <div class="portfolio-item-content">
-        <h3>Spider's Shop</h3>
-        <p>Complete shop system with purchasing terms, store credits, and detailed policies</p>
+        <h3>Trainer Guide Embed</h3>
+        <p>Training procedures and standards</p>
       </div>
-    </div>
+    </a>
     
-    <div class="portfolio-item tilt" data-category="discord">
-      <img src="Screenshot 2026-02-08 075858.png" alt="Spider's Dashboard">
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205742.png" alt="HR Guide Embed">
       <div class="portfolio-item-content">
-        <h3>Spider's Dashboard</h3>
-        <p>Custom commission dashboard showcasing quality service and fast delivery promises</p>
+        <h3>HR Guide Embed</h3>
+        <p>High-rank staff guidelines (sensitive information redacted)</p>
       </div>
-    </div>
+    </a>
+    
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205756.png" alt="Verification Embed">
+      <div class="portfolio-item-content">
+        <h3>Verification Embed</h3>
+        <p>Account verification system</p>
+      </div>
+    </a>
+    
+    <a href="https://discord.gg/corp" target="_blank" class="portfolio-item tilt" data-category="discord">
+      <img src="Screenshot_2026-05-28_205802.png" alt="Staff Guide Embed">
+      <div class="portfolio-item-content">
+        <h3>Staff Guide Embed</h3>
+        <p>Staff guidelines and expectations (sensitive codes and usernames removed for security)</p>
+      </div>
+    </a>
   </div>
 </section>
   </div>
@@ -1298,6 +1286,16 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+});
+
+// Add fade effect to external links
+document.addEventListener('click', function(e) {
+  if (e.target.tagName === 'A' && e.target.target === '_blank') {
+    e.target.style.opacity = '0.8';
+    setTimeout(() => {
+      e.target.style.opacity = '1';
+    }, 100);
+  }
 });
 </script>
 
