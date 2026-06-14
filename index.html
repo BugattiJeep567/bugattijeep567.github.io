@@ -436,10 +436,33 @@ section {
   gap: 25px;
   width: max-content;
   animation: marqueeScroll 30s linear infinite;
+  transition: animation-duration 0.3s ease;
 }
 
 .reviews-marquee-track:hover {
-  animation-play-state: paused;
+  animation-duration: 60s;
+}
+
+.review-card {
+  background: rgba(21, 25, 35, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(108, 140, 255, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  min-width: 320px;
+  flex-shrink: 0;
+}
+
+.review-card p {
+  color: #b5b9c9;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.review-card b {
+  color: #6c8cff;
+  font-weight: 700;
 }
 
 @keyframes marqueeScroll {
@@ -895,6 +918,9 @@ a, button, .portfolio-item, .card {
         <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
       </div>
       <div class="review-card">
+        <p><b>yehia_hisman</b> — "Was really, really fast and did really, really well. Keep up the good work!" ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="review-card">
         <p><b>Baseballfan</b> — "Amazing product! Definitely recommend if you need your work showcased! Great product, fast service." ⭐⭐⭐⭐⭐</p>
       </div>
       <div class="review-card">
@@ -902,6 +928,9 @@ a, button, .portfolio-item, .card {
       </div>
       <div class="review-card">
         <p><b>xanderxd6661</b> — "Great embeds and fast delivery." ⭐⭐⭐⭐⭐</p>
+      </div>
+      <div class="review-card">
+        <p><b>yehia_hisman</b> — "Was really, really fast and did really, really well. Keep up the good work!" ⭐⭐⭐⭐⭐</p>
       </div>
     </div>
   </div>
