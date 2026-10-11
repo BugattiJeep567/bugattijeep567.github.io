@@ -108,6 +108,7 @@ img { display: block; max-width: 100%; height: auto; }
   border: 1px dashed var(--seam); border-radius: 8px;
   transition: border-color .3s;
 }
+.piece + .piece { margin-top: clamp(24px, 4vw, 44px); }
 .piece:hover, .piece:focus-within { border-color: var(--brass-dim); }
 .piece-media { overflow: hidden; border-radius: 4px; background: #000; }
 .piece-media img { width: 100%; transition: transform .6s ease; }
@@ -223,6 +224,8 @@ html:has(dialog[open]) { overflow: hidden; }
 
   <section class="section" id="work">
     <h2 class="section-title">Featured work</h2>
+    <!-- To add a new item: copy everything from <article class="piece"> to </article>,
+         paste it right below, then change the image file, the title and the two shop names/links. -->
     <article class="piece">
       <div class="piece-media">
         <img src="prestige-pack.png" width="852" height="600" alt="Prestige Pack: a black suit set with brass buttons and a bow tie, shown as jacket and vest variations on a clothing template">
@@ -232,8 +235,10 @@ html:has(dialog[open]) { overflow: hidden; }
         <div class="swap">
           <p class="hint" aria-hidden="true">Hover to choose a shop.</p>
           <div class="shops" role="group" aria-label="Choose a shop">
-            <button class="shop" type="button">React Studio's</button>
-            <button class="shop" type="button">Luxi's Workshop</button>
+            <!-- When an item is posted, paste its link between the quotes in data-link.
+                 Empty data-link = shows the "not posted yet" popup. -->
+            <button class="shop" type="button" data-link="">React Studio's</button>
+            <button class="shop" type="button" data-link="">Luxi's Workshop</button>
           </div>
         </div>
       </div>
@@ -308,6 +313,11 @@ html:has(dialog[open]) { overflow: hidden; }
   var title = document.getElementById('notice-title');
   document.querySelectorAll('.shop').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      var link = (btn.getAttribute('data-link') || '').trim();
+      if (link) {
+        window.open(link, '_blank', 'noopener');
+        return;
+      }
       title.textContent = btn.textContent;
       dialog.showModal();
     });
