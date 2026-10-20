@@ -5,27 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bugatti | Clothing Designs</title>
 <meta name="description" content="Clothing designs crafted by Bugatti. See the Prestige Pack and read client reviews.">
-<meta name="theme-color" content="#17181a">
+<meta name="theme-color" content="#0d1735">
 <meta property="og:title" content="Bugatti | Clothing Designs">
 <meta property="og:description" content="I've done stuff - Bugatti. Clothing Designer contributing to over 20,000+ members in Roblox communities around the world.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317181a'/%3E%3Ctext x='32' y='46' font-size='40' text-anchor='middle' font-family='Georgia,serif' fill='%23c2a15f'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚗%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Caveat:wght@600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
 <style>
 :root {
-  --wool: #17181a;
-  --ink: #101113;
-  --chalk: #ece6d8;
-  --ash: #9a968c;
-  --seam: #3b382f;
-  --brass: #c2a15f;
-  --brass-light: #d3b475;
-  --brass-dim: #8f7640;
+  --bg: #0d1735;
+  --card: #16224a;
+  --card-2: #1c2a5c;
+  --chalk: #f5f0e4;
+  --muted: #aab1c9;
+  --line: rgba(245,240,228,0.14);
+  --yellow: #ffd23f;
+  --yellow-hover: #ffdd6b;
   --pad: clamp(20px, 5vw, 64px);
-  --serif: 'Bodoni Moda', 'Didot', Georgia, serif;
-  --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --hand: 'Caveat', 'Segoe Print', cursive;
   color-scheme: dark;
 }
 
@@ -35,126 +36,169 @@ html { scroll-padding-top: 72px; }
 
 body {
   margin: 0;
-  background-color: var(--wool);
-  /* faint pinstripe, like suiting cloth */
-  background-image: repeating-linear-gradient(90deg, rgba(236,230,216,0.03) 0 1px, transparent 1px 36px);
+  background: var(--bg);
   color: var(--chalk);
-  font-family: var(--sans);
+  font-family: var(--body);
   font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+/* a little film grain so the flat colour feels like paper, not a screen */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 50; pointer-events: none; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; line-height: 1.05; letter-spacing: -0.015em; }
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.05; letter-spacing: -0.02em; }
 p { margin: 0; }
 a { color: inherit; }
 img { display: block; max-width: 100%; height: auto; }
-
-:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
 
 /* ---------- Nav ---------- */
 .nav {
   position: sticky; top: 0; z-index: 20;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 16px var(--pad);
-  background: rgba(23,24,26,0.85);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-  border-bottom: 1px dashed var(--seam);
+  padding: 14px var(--pad);
+  background: rgba(13,23,53,0.82);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
 }
-.wordmark { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; text-decoration: none; letter-spacing: -0.01em; }
-.nav-links { display: flex; gap: clamp(16px, 4vw, 34px); }
-.nav-links a { color: var(--ash); text-decoration: none; font-weight: 500; font-size: 0.97rem; transition: color .2s; }
+.wordmark { font-family: var(--display); font-size: 1.6rem; font-weight: 800; text-decoration: none; letter-spacing: -0.04em; }
+.wordmark span { color: var(--yellow); }
+.nav-links { display: flex; gap: clamp(14px, 3.4vw, 30px); }
+.nav-links a { text-decoration: none; font-weight: 600; font-size: 0.92rem; color: var(--muted); transition: color .15s; }
 .nav-links a:hover { color: var(--chalk); }
+.nav-links a:last-child { color: var(--yellow); }
 
 /* ---------- Buttons ---------- */
 .btn {
-  display: inline-block; font: inherit; font-weight: 600; text-decoration: none; text-align: center;
-  padding: 14px 30px; border-radius: 999px; border: 1px solid transparent; cursor: pointer;
-  transition: background-color .2s, border-color .2s, transform .2s;
+  display: inline-block; font: inherit; font-weight: 700; text-decoration: none; text-align: center;
+  padding: 14px 26px; border-radius: 12px; border: 2px solid transparent; cursor: pointer;
+  transition: background-color .15s, transform .2s cubic-bezier(.2,.8,.3,1.4);
 }
-.btn-primary { background: var(--brass); color: var(--ink); }
-.btn-primary:hover { background: var(--brass-light); transform: translateY(-2px); }
-.btn-ghost { border: 1px dashed var(--brass-dim); color: var(--chalk); }
-.btn-ghost:hover { border-color: var(--brass); }
+.btn-primary { background: var(--yellow); color: var(--bg); }
+.btn-primary:hover { background: var(--yellow-hover); transform: translateY(-3px) rotate(-1deg); }
+.btn-ghost { border-color: var(--line); color: var(--chalk); }
+.btn-ghost:hover { border-color: var(--chalk); transform: translateY(-3px) rotate(1deg); }
 
 /* ---------- Hero ---------- */
 .hero {
-  position: relative;
-  display: flex; flex-direction: column; justify-content: center;
-  min-height: min(86svh, 820px);
-  padding: clamp(56px, 10vw, 120px) var(--pad);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px;
+  min-height: min(82svh, 780px);
+  padding: clamp(48px, 9vw, 110px) var(--pad);
 }
-.hero h1 { font-size: clamp(3.4rem, 12.5vw, 9.5rem); font-weight: 500; line-height: 0.92; letter-spacing: -0.03em; }
-.hero-sub { margin-top: 28px; max-width: 32ch; font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--ash); }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.hero h1 { font-size: clamp(2.6rem, 7.4vw, 5.9rem); font-weight: 800; line-height: 0.98; letter-spacing: -0.035em; max-width: 17ch; }
+.hero-sub { margin-top: 26px; max-width: 36ch; font-size: clamp(1.1rem, 2.2vw, 1.3rem); color: var(--muted); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
 
-/* the one load moment: a seam gets stitched across the bottom of the hero */
-.seam { position: absolute; left: var(--pad); right: var(--pad); bottom: 0; border-top: 2px dashed var(--brass-dim); }
+.sticker {
+  width: clamp(130px, 17vw, 190px); aspect-ratio: 1; border-radius: 50%;
+  display: grid; place-content: center; text-align: center; gap: 2px;
+  background: var(--yellow); color: var(--bg);
+  border: 5px solid var(--chalk);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  transform: rotate(9deg);
+}
+.sticker b { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -0.03em; line-height: 1; }
+.sticker span { font-size: 0.85rem; font-weight: 600; line-height: 1.15; padding: 0 14px; }
 @media (prefers-reduced-motion: no-preference) {
-  .seam { clip-path: inset(0 100% 0 0); animation: sew 1.8s .3s cubic-bezier(.65,0,.35,1) forwards; }
-  @keyframes sew { to { clip-path: inset(0 0 0 0); } }
+  .sticker { animation: slap .7s .35s cubic-bezier(.2,.9,.3,1.3) backwards; }
+  @keyframes slap { from { opacity: 0; transform: scale(.5) rotate(-24deg); } }
 }
 
 /* ---------- Sections ---------- */
-.section { padding: clamp(72px, 11vw, 140px) var(--pad); }
-.section-title { font-size: clamp(2.2rem, 5.5vw, 3.6rem); margin-bottom: clamp(32px, 5vw, 56px); }
+.section { padding: clamp(64px, 10vw, 128px) var(--pad); }
+.section-title { font-size: clamp(2.2rem, 5.2vw, 3.8rem); font-weight: 800; letter-spacing: -0.035em; }
+.section-note { margin-top: 12px; color: var(--muted); max-width: 46ch; }
+.section-head { margin-bottom: clamp(32px, 5vw, 60px); }
 
-/* ---------- Prestige Pack ---------- */
-.piece {
-  display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-  gap: clamp(22px, 4vw, 52px); align-items: center;
-  padding: clamp(12px, 2vw, 20px);
-  background: var(--ink);
-  border: 1px dashed var(--seam); border-radius: 8px;
-  transition: border-color .3s;
+/* ---------- Packs ---------- */
+.pieces {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(34px, 4.5vw, 60px) clamp(22px, 4vw, 56px); align-items: start;
 }
-.piece + .piece { margin-top: clamp(24px, 4vw, 44px); }
-.piece:hover, .piece:focus-within { border-color: var(--brass-dim); }
-.piece-media { overflow: hidden; border-radius: 4px; background: #000; }
+.piece {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--card); border-radius: 18px; padding: 14px 14px 24px;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform .4s cubic-bezier(.2,.8,.3,1.25);
+}
+.piece:nth-child(odd) { --tilt: -0.7deg; }
+.piece:nth-child(even) { --tilt: 0.6deg; margin-top: clamp(0px, 4.5vw, 64px); }
+.piece:hover, .piece:focus-within { transform: rotate(0deg) translateY(-6px); }
+/* a strip of tape holding each pack up */
+.piece::before {
+  content: ""; position: absolute; z-index: 2; top: -13px; left: 50%; width: 96px; height: 28px; margin-left: -48px;
+  background: rgba(255,210,63,0.82); transform: rotate(-3deg);
+  clip-path: polygon(0 0, 4% 18%, 0 36%, 4% 54%, 0 72%, 4% 90%, 0 100%, 100% 100%, 96% 82%, 100% 64%, 96% 46%, 100% 28%, 96% 10%, 100% 0);
+}
+.piece:nth-child(even)::before { transform: rotate(2.5deg); }
+.piece-media { overflow: hidden; border-radius: 10px; background: #000; }
 .piece-media img { width: 100%; transition: transform .6s ease; }
-.piece:hover .piece-media img { transform: scale(1.025); }
-.piece-info { padding: 4px clamp(0px, 1vw, 12px) 4px 0; }
-.piece-info h3 { font-size: clamp(2rem, 4.2vw, 3rem); padding-bottom: 22px; margin-bottom: 22px; border-bottom: 1px dashed var(--seam); }
+.piece:hover .piece-media img { transform: scale(1.03); }
+.piece-info { padding: 20px 8px 0; }
+.piece-info h3 { font-size: clamp(1.45rem, 2.5vw, 1.95rem); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 16px; }
 
-/* hint and shop buttons share one grid cell so nothing shifts on hover */
+/* hint and shop buttons share one grid cell so nothing jumps on hover */
 .swap { display: grid; }
 .swap > * { grid-area: 1 / 1; align-self: start; }
-.hint { display: none; color: var(--ash); font-size: 0.97rem; pointer-events: none; }
+.hint { display: none; font-family: var(--hand); font-weight: 600; font-size: 1.45rem; line-height: 1.2; color: var(--yellow); pointer-events: none; }
 .shops { display: flex; flex-wrap: wrap; gap: 10px; }
 .shop {
-  font: inherit; font-weight: 500; color: var(--chalk); background: transparent;
-  border: 1px dashed var(--brass-dim); border-radius: 999px; padding: 11px 20px; cursor: pointer;
-  opacity: 0.5; transition: opacity .2s, border-color .2s;
+  font: inherit; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+  color: var(--yellow); background: transparent;
+  border: 2px solid var(--yellow); border-radius: 10px; padding: 9px 16px;
+  transition: background-color .15s, color .15s, opacity .15s;
 }
-.shop:hover, .shop:focus-visible { opacity: 0.85; border-color: var(--brass); }
+.shop:hover, .shop:focus-visible { background: var(--yellow); color: var(--bg); }
+/* no link yet = faded. Paste a link in data-link and it lights up by itself. */
+.shop[data-link=""], .shop:not([data-link]) { color: var(--chalk); border-color: var(--line); opacity: 0.55; }
+.shop[data-link=""]:hover, .shop:not([data-link]):hover,
+.shop[data-link=""]:focus-visible, .shop:not([data-link]):focus-visible { background: transparent; color: var(--chalk); border-color: var(--muted); opacity: 0.85; }
 
 /* mouse users: buttons appear on hover. Touch and keyboard users always get them. */
 @media (hover: hover) and (pointer: fine) {
-  .hint { display: block; transition: opacity .25s; }
-  .shops { opacity: 0; transform: translateY(8px); transition: opacity .3s, transform .3s; }
+  .hint { display: block; transition: opacity .2s; }
+  .shops { opacity: 0; transform: translateY(8px); transition: opacity .25s, transform .25s; }
   .piece:hover .shops, .piece:focus-within .shops { opacity: 1; transform: none; }
   .piece:hover .hint, .piece:focus-within .hint { opacity: 0; }
 }
 
-/* ---------- Reviews ---------- */
-.reviews-title { padding: 0 var(--pad); }
-.reviews { padding-inline: 0; }
+/* ---------- Server reviews ---------- */
+.voices { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: clamp(60px, 9vw, 112px); }
+.voice { max-width: 860px; }
+.voice:nth-child(even) { margin-left: auto; }
+.voice blockquote { margin: 0; }
+.voice .text { font-family: var(--display); font-weight: 500; font-size: clamp(1.55rem, 3.5vw, 2.55rem); line-height: 1.26; letter-spacing: -0.015em; }
+.voice .text::before, .voice .text::after { color: var(--yellow); font-weight: 800; font-size: 1.5em; line-height: 0; }
+.voice .text::before { content: "“"; content: "“" / ""; vertical-align: -0.3em; margin-right: 0.06em; }
+.voice .text::after { content: "”"; content: "”" / ""; vertical-align: -0.5em; margin-left: 0.06em; }
+/* bold = highlighted: yellow with a soft glow, like the site is lit from inside */
+.voice .text strong { color: var(--yellow); font-weight: 800; text-shadow: 0 0 22px rgba(255,210,63,0.5); }
+.by { display: flex; align-items: center; gap: 16px; margin-top: 30px; }
+.by img { width: 58px; height: 58px; flex: none; border-radius: 14px; object-fit: cover; background: var(--card); }
+.who-name { font-size: 1.1rem; line-height: 1.3; }
+.who-name strong { font-weight: 800; }
+.where { color: var(--muted); font-size: 0.97rem; line-height: 1.4; }
+
+/* ---------- Client reviews ---------- */
+.marquee { padding-block: 22px; }
 .track { list-style: none; margin: 0; padding: 0 var(--pad); display: flex; flex-wrap: wrap; gap: 20px; }
 .review {
   flex: 1 1 280px; max-width: 360px;
-  padding: 26px 28px;
-  border: 1px dashed var(--seam); border-radius: 8px;
-  background: rgba(16,17,19,0.55);
+  padding: 24px 26px; border-radius: 16px; background: var(--card);
+  transform: rotate(var(--tilt, 0deg));
 }
-.stars { display: block; color: var(--brass); letter-spacing: 0.18em; font-size: 0.95rem; margin-bottom: 14px; }
-.quote { font-family: var(--serif); font-size: 1.2rem; line-height: 1.5; font-weight: 500; }
-.who { margin-top: 16px; color: var(--ash); font-size: 0.95rem; }
+.stars { display: block; color: var(--yellow); letter-spacing: 0.14em; font-size: 0.95rem; margin-bottom: 12px; }
+.quote { font-family: var(--display); font-size: 1.18rem; line-height: 1.45; font-weight: 500; letter-spacing: -0.01em; }
+.who { margin-top: 14px; color: var(--muted); font-size: 0.95rem; }
 
 @media (prefers-reduced-motion: no-preference) {
   .js .marquee {
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
   }
   .js .track { flex-wrap: nowrap; width: max-content; gap: 0; padding: 0; animation: scroll 60s linear infinite; }
   .js .track:hover, .js .track:focus-within { animation-play-state: paused; }
@@ -164,48 +208,51 @@ img { display: block; max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) { .clone { display: none; } }
 
 /* ---------- Join ---------- */
-.join { min-height: 70svh; display: flex; flex-direction: column; justify-content: center; border-top: 1px dashed var(--seam); }
-.join h2 { font-size: clamp(2.6rem, 8vw, 6rem); max-width: 14ch; line-height: 0.98; }
-.join p { margin-top: 24px; max-width: 34ch; color: var(--ash); font-size: 1.2rem; }
-.join .btn { margin-top: 40px; align-self: flex-start; padding: 18px 44px; font-size: 1.15rem; }
-.join small { display: block; margin-top: 14px; color: var(--ash); font-size: 0.9rem; }
+.join { min-height: 72svh; display: flex; flex-direction: column; justify-content: center; }
+.join h2 { font-size: clamp(2.8rem, 9vw, 7rem); font-weight: 800; letter-spacing: -0.04em; line-height: 0.96; max-width: 11ch; }
+.join p { margin-top: 24px; max-width: 34ch; color: var(--muted); font-size: 1.2rem; }
+.join .btn { margin-top: 36px; align-self: flex-start; padding: 18px 40px; font-size: 1.15rem; border-radius: 14px; }
+.join small { display: block; margin-top: 14px; color: var(--muted); font-size: 0.9rem; }
 
-.footer { padding: 28px var(--pad); border-top: 1px dashed var(--seam); color: var(--ash); font-size: 0.9rem; }
+.footer { padding: 26px var(--pad); color: var(--muted); font-size: 0.9rem; }
 
 /* ---------- "Not posted yet" dialog ---------- */
 dialog {
   width: min(420px, 92vw); padding: 0; margin: auto;
-  background: var(--ink); color: var(--chalk);
-  border: 1px dashed var(--brass-dim); border-radius: 10px;
+  background: var(--card-2); color: var(--chalk);
+  border: 0; border-radius: 20px; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
 }
-dialog::backdrop { background: rgba(8,8,9,0.78); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+dialog::backdrop { background: rgba(6,10,26,0.78); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
 html:has(dialog[open]) { overflow: hidden; }
-.notice { padding: 40px 36px 34px; }
-.notice h3 { font-size: 2rem; margin-bottom: 14px; }
-.notice p { color: var(--ash); }
-.notice .btn { margin-top: 28px; }
+.notice { padding: 38px 34px 32px; }
+.notice h3 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+.notice p { color: var(--muted); }
+.notice .btn { margin-top: 26px; }
 @media (prefers-reduced-motion: no-preference) {
-  dialog[open] { animation: rise .25s ease-out; }
+  dialog[open] { animation: rise .3s cubic-bezier(.2,.9,.3,1.2); }
   dialog[open]::backdrop { animation: dim .25s ease-out; }
-  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px) rotate(-1.5deg); } }
   @keyframes dim { from { opacity: 0; } }
 }
 
 /* ---------- Small screens ---------- */
 @media (max-width: 760px) {
-  .piece { grid-template-columns: 1fr; }
-  .piece-info { padding: 4px 6px 10px; }
+  .hero { grid-template-columns: 1fr; gap: 32px; }
+  .pieces { grid-template-columns: 1fr; }
+  .piece:nth-child(even) { margin-top: 0; }
   .hero-actions .btn { flex: 1 1 100%; }
   .join .btn { align-self: stretch; }
+  .voice:nth-child(even) { margin-left: 0; }
 }
 </style>
 </head>
 <body>
 
 <nav class="nav" aria-label="Main">
-  <a class="wordmark" href="#top">Bugatti</a>
+  <a class="wordmark" href="#top">bugatti<span>.</span></a>
   <div class="nav-links">
     <a href="#work">Work</a>
+    <a href="#servers">Servers</a>
     <a href="#reviews">Reviews</a>
     <a href="#join">Join</a>
   </div>
@@ -213,94 +260,130 @@ html:has(dialog[open]) { overflow: hidden; }
 
 <main id="top">
   <header class="hero">
-    <h1>Crafted<br>by Bugatti</h1>
-    <p class="hero-sub">Clothing designs, cut clean and finished with care.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#work">View the work</a>
-      <a class="btn btn-ghost" href="https://discord.gg/cEh2kmmJWp" target="_blank" rel="noopener noreferrer">Join the server</a>
+    <div>
+      <h1>Hey, I'm Bugatti. I design clothing for Roblox communities.</h1>
+      <p class="hero-sub">Suits, packs and full outfits for roleplay servers. Clean, detailed, and made to be worn.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">See my work</a>
+        <a class="btn btn-ghost" href="https://discord.gg/cEh2kmmJWp" target="_blank" rel="noopener noreferrer">Join the server</a>
+      </div>
     </div>
-    <div class="seam" aria-hidden="true"></div>
+    <div class="sticker" aria-label="Over 20,000 community members">
+      <b>20,000+</b>
+      <span>community members</span>
+    </div>
   </header>
 
   <section class="section" id="work">
-    <h2 class="section-title">Featured work</h2>
-    <!-- To add a new item: copy everything from <article class="piece"> to </article>,
-         paste it right below, then change the image file, the title and the two shop names/links. -->
-    <article class="piece">
-      <div class="piece-media">
-        <img src="prestige-pack.png" width="852" height="600" alt="Prestige Pack: a black suit set with brass buttons and a bow tie, shown as jacket and vest variations on a clothing template">
-      </div>
-      <div class="piece-info">
-        <h3>Prestige Pack</h3>
-        <div class="swap">
-          <p class="hint" aria-hidden="true">Hover to choose a shop.</p>
-          <div class="shops" role="group" aria-label="Choose a shop">
-            <!-- When an item is posted, paste its link between the quotes in data-link.
-                 Empty data-link = shows the "not posted yet" popup. -->
-            <button class="shop" type="button" data-link="https://reactstudios.com/marketplace/products/prestigeformal-package">React Studio's</button>
-            <button class="shop" type="button" data-link="">Luxi's Workshop</button>
-          </div>
-        </div>
-      </div>
-    </article>
-  
-    <article class="piece">
-      <div class="piece-media">
-        <img src="miami-dade.png" width="852" height="600" alt="Miami-Dade Sheriff Office Pack: Pack based off of the Miami-Dade Sheriff Office">
-      </div>
-      <div class="piece-info">
-        <h3>Miami-Dade Sheriff Office</h3>
-        <div class="swap">
-          <p class="hint" aria-hidden="true">Hover to choose a shop.</p>
-          <div class="shops" role="group" aria-label="Choose a shop">
-            <!-- When an item is posted, paste its link between the quotes in data-link.
-                 Empty data-link = shows the "not posted yet" popup. -->
-            <button class="shop" type="button" data-link="https://reactstudios.com/marketplace/products/miami-dade-sheriff-office-pack">React Studio's</button>
-            <button class="shop" type="button" data-link="https://erlcx.com/item/772297788">Luxi's Workshop</button>
-          </div>
-        </div>
-      </div>
-    </article>
+    <div class="section-head">
+      <h2 class="section-title">Stuff I've made</h2>
+    </div>
 
-     <article class="piece">
-      <div class="piece-media">
-        <img src="hawaii-sheriff.png" width="852" height="600" alt="Based on the state of Hawaii, State Sheriff Office thing.">
-      </div>
-      <div class="piece-info">
-        <h3>Hawaii Sheriff</h3>
-        <div class="swap">
-          <p class="hint" aria-hidden="true">Hover to choose a shop.</p>
-          <div class="shops" role="group" aria-label="Choose a shop">
-            <!-- When an item is posted, paste its link between the quotes in data-link.
-                 Empty data-link = shows the "not posted yet" popup. -->
-            <button class="shop" type="button" data-link="https://reactstudios.com/marketplace/products/hawaii-sheriff-office-pack">React Studio's</button>
-            <button class="shop" type="button" data-link="">Luxi's Workshop</button>
-          </div>
-        </div>
-      </div>
-    </article>
+    <!-- ADD A NEW PACK: copy everything from <article class="piece"> down to </article>,
+         paste it right below the last one (still inside this pieces div), then change:
+         the image filename, the title, and the two data-link="" shop links.
+         Empty data-link = faded button that shows "not posted yet". Pasted link = button lights up and opens it. -->
+    <div class="pieces">
 
-    <article class="piece">
-      <div class="piece-media">
-        <img src="fdotshowcase.png" width="852" height="600" alt="FDOT: A premium pack.">
-      </div>
-      <div class="piece-info">
-        <h3>Florida Department of Transportation</h3>
-        <div class="swap">
-          <p class="hint" aria-hidden="true">Hover to choose a shop.</p>
-          <div class="shops" role="group" aria-label="Choose a shop">
-            <!-- When an item is posted, paste its link between the quotes in data-link.
-                 Empty data-link = shows the "not posted yet" popup. -->
-            <button class="shop" type="button" data-link="">React Studio's</button>
-            <button class="shop" type="button" data-link="">Luxi's Workshop</button>
+      <article class="piece">
+        <div class="piece-media">
+          <img src="prestige-pack.png" width="852" height="600" alt="Prestige Pack: a black suit set with brass buttons and a bow tie, shown as jacket and vest variations on a clothing template">
+        </div>
+        <div class="piece-info">
+          <h3>Prestige Pack</h3>
+          <div class="swap">
+            <p class="hint" aria-hidden="true">hover to pick a shop</p>
+            <div class="shops" role="group" aria-label="Choose a shop">
+              <button class="shop" type="button" data-link="https://reactstudios.com/marketplace/products/prestigeformal-package">React Studio's</button>
+              <button class="shop" type="button" data-link="">Luxi's Workshop</button>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+
+      <article class="piece">
+        <div class="piece-media">
+          <img src="miami-dade.png" width="852" height="600" alt="Miami-Dade Sheriff Office Pack: Pack based off of the Miami-Dade Sheriff Office">
+        </div>
+        <div class="piece-info">
+          <h3>Miami-Dade Sheriff Office</h3>
+          <div class="swap">
+            <p class="hint" aria-hidden="true">hover to pick a shop</p>
+            <div class="shops" role="group" aria-label="Choose a shop">
+              <button class="shop" type="button" data-link="https://reactstudios.com/marketplace/products/miami-dade-sheriff-office-pack">React Studio's</button>
+              <button class="shop" type="button" data-link="https://erlcx.com/item/772297788">Luxi's Workshop</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="piece">
+        <div class="piece-media">
+          <img src="hawaii-sheriff.png" width="852" height="600" alt="Based on the state of Hawaii, State Sheriff Office thing.">
+        </div>
+        <div class="piece-info">
+          <h3>Hawaii Sheriff</h3>
+          <div class="swap">
+            <p class="hint" aria-hidden="true">hover to pick a shop</p>
+            <div class="shops" role="group" aria-label="Choose a shop">
+              <button class="shop" type="button" data-link="https://reactstudios.com/marketplace/products/hawaii-sheriff-office-pack">React Studio's</button>
+              <button class="shop" type="button" data-link="">Luxi's Workshop</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="piece">
+        <div class="piece-media">
+          <img src="fdotshowcase.png" width="852" height="600" alt="FDOT: A premium pack.">
+        </div>
+        <div class="piece-info">
+          <h3>Florida Department of Transportation</h3>
+          <div class="swap">
+            <p class="hint" aria-hidden="true">hover to pick a shop</p>
+            <div class="shops" role="group" aria-label="Choose a shop">
+              <button class="shop" type="button" data-link="">React Studio's</button>
+              <button class="shop" type="button" data-link="">Luxi's Workshop</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
   </section>
 
-  <section class="section reviews" id="reviews" style="border-top:1px dashed var(--seam)">
-    <h2 class="section-title reviews-title">Client reviews</h2>
+  <section class="section" id="servers">
+    <div class="section-head">
+      <h2 class="section-title">Straight from the servers</h2>
+      <p class="section-note">What the people running the big communities have to say.</p>
+    </div>
+
+    <!-- ADD A SERVER REVIEW: copy a whole <li class="voice"> ... </li> block and paste it above or below.
+         - Highlight words: wrap them like this: <strong>absolute game-changer</strong>
+         - Logo: upload the server's logo to your repo, then put its exact filename in src (capital letters matter).
+         - Last two lines are free text: "username, Rank" and "Server Name, 32k members". -->
+    <ul class="voices">
+
+      <li class="voice">
+        <blockquote>
+          <p class="text">Replace this with the real review. Wrap the part you want to <strong>stand out</strong> in strong tags.</p>
+        </blockquote>
+        <div class="by">
+          <img src="server-logo.png" alt="Server Name logo" width="58" height="58" onerror="this.remove()">
+          <div>
+            <p class="who-name"><strong>username</strong>, Rank</p>
+            <p class="where">Server Name, 0k members</p>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="section-head">
+      <h2 class="section-title">Kind words</h2>
+    </div>
     <div class="marquee">
       <ul class="track">
         <li class="review">
@@ -343,8 +426,8 @@ html:has(dialog[open]) { overflow: hidden; }
   </section>
 
   <section class="section join" id="join">
-    <h2>Join the client server.</h2>
-    <p>Everything starts in the server. Hop in and say hello.</p>
+    <h2>Come hang out in the server.</h2>
+    <p>Got a question or a project in mind? That's where it all happens.</p>
     <a class="btn btn-primary" href="https://discord.gg/cEh2kmmJWp" target="_blank" rel="noopener noreferrer">Join the server</a>
     <small>Opens Discord in a new tab.</small>
   </section>
@@ -362,7 +445,7 @@ html:has(dialog[open]) { overflow: hidden; }
 
 <script>
 (function () {
-  // "Not posted yet" dialog
+  // Shop buttons: open the link if there is one, otherwise show the "not posted yet" popup
   var dialog = document.getElementById('notice');
   var title = document.getElementById('notice-title');
   document.querySelectorAll('.shop').forEach(function (btn) {
@@ -379,15 +462,20 @@ html:has(dialog[open]) { overflow: hidden; }
   // click on the dimmed backdrop closes it
   dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
 
-  // Reviews marquee: duplicate the cards once so the loop is seamless
+  // Kind words: give each card its own little tilt, then (if motion is ok) duplicate once for a seamless loop
   var track = document.querySelector('.track');
-  if (track && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    Array.prototype.slice.call(track.children).forEach(function (card) {
-      var copy = card.cloneNode(true);
-      copy.classList.add('clone');
-      copy.setAttribute('aria-hidden', 'true');
-      track.appendChild(copy);
+  if (track) {
+    Array.prototype.slice.call(track.children).forEach(function (card, i) {
+      card.style.setProperty('--tilt', (((i * 3) % 5) - 2) * 0.5 + 'deg');
     });
+    if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      Array.prototype.slice.call(track.children).forEach(function (card) {
+        var copy = card.cloneNode(true);
+        copy.classList.add('clone');
+        copy.setAttribute('aria-hidden', 'true');
+        track.appendChild(copy);
+      });
+    }
   }
 })();
 </script>
